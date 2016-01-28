@@ -2,7 +2,8 @@
 var Enemy = function() {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
-
+	this.startX = 0;
+	this.startY = [102, 203, 304];
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
