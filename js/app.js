@@ -17,17 +17,21 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    if (this.x >= 505) {
-    	this.x = -101;
-    	this.y = 62 + (85.5 * (Math.floor(Math.random() * 3)));
-    	this.speed = (Math.random() * 800) + 100;
-    } else {
-    	this.x += dt * this.speed;
-    };
+    if(this.x <= 550){
+        this.x += this.speed * dt;
+    }else{
+        this.x = -2;
+    }
+    // Reset the game if player hits a bug's proximity by 35px
+    if(player.x >= this.x - 35 && player.x <= this.x + 35){
+        if(player.y >= this.y - 35 && player.y <= this.y + 35){
+            this.reset();
+        }
+    }
 };
 
 // Draw the enemy on the screen, required method for game
-Enemy.prototype.render = function() {
+Enemy.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
@@ -36,8 +40,8 @@ Enemy.prototype.render = function() {
 // a handleInput() method.
 var Player = function() {
     this.sprite = 'images/char-princess-girl.png';
-    this.x = 202;
-    this.y = 404;
+    this.x = 200;
+    this.y = 400;
     this.runsCompleted = 0;
 };
 
@@ -57,19 +61,24 @@ Player.prototype.update = function() {
 	};
 };
 
-Player.prototype.render = function() {
+Player.prototype.render = function () {
    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-Player.prototype.handleInput =function(key) {
+Player.prototype.handleInput = function(key) {
 	var direction = {
 		'left': [-101, 0],
 		'up': [0, -85.5],
 		'right': [101, 0],
-		'down' : [0, 85.5]
+		'down': [0, 85.5]
 		};
 		this.x += direction[key][0];
 		this.y += direction[key][1];
+};
+
+Object.prototype.reset = function() {
+  player.x = 200;
+  player.y = 400;
 };
 
 // Now instantiate your objects.
