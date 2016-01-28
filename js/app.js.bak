@@ -1,14 +1,12 @@
 // Enemies our player must avoid
 var Enemy = function() {
     // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
+    // defined the Enecy function and told them where to start and how fast to go 
 	this.sprite = 'images/enemy-bug.png';
 	this.x = -101;
 	this.y = 62 + (85.5 * (Math.floor(Math.random() * 3)));
-	this.speed = (Math.random() * 800) + 100;
-    // The image/sprite for our enemies, this uses
-    // a helper we've provided to easily load images
-    
+	this.speed = (Math.random() * 500) + 100;
+
 };
 
 // Update the enemy's position, required method for game
@@ -22,9 +20,9 @@ Enemy.prototype.update = function(dt) {
     }else{
         this.x = -2;
     }
-    // Reset the game if player hits a bug's proximity by 35px
-    if(player.x >= this.x - 35 && player.x <= this.x + 35){
-        if(player.y >= this.y - 35 && player.y <= this.y + 35){
+    // Reset the game if player hits a bug proximity by 30px
+    if(player.x >= this.x - 30 && player.x <= this.x + 30){
+        if(player.y >= this.y - 30 && player.y <= this.y + 30){
             this.reset();
         }
     }
@@ -38,6 +36,7 @@ Enemy.prototype.render = function () {
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
+
 // Tells the player where to start
 var Player = function() {
     this.sprite = 'images/char-princess-girl.png';
@@ -46,12 +45,13 @@ var Player = function() {
     this.runsCompleted = 0;
 };
 
-
+//tells the player where the water is located
 Player.prototype.update = function() {
 	if (this.y <= 0){
 		this.runsCompleted += 1;
 		this.y = 400;
 	};
+//keeps the princess from running off the screen
 	if (this.x <= 0) {
 		this.x = 0;
 	}
@@ -63,10 +63,12 @@ Player.prototype.update = function() {
 	};
 };
 
+// draws the player on he canvas
 Player.prototype.render = function () {
    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
+//this adds the movement in the keys so that the princess will actually move
 Player.prototype.handleInput = function(key) {
 	var direction = {
 		'left': [-101, 0],
@@ -78,6 +80,7 @@ Player.prototype.handleInput = function(key) {
 		this.y += direction[key][1];
 };
 
+//this is the function to get the princess to reset when she hits a bug
 Object.prototype.reset = function() {
   player.x = 200;
   player.y = 400;
@@ -90,6 +93,7 @@ var allEnemies = [];
 allEnemies[0] = new Enemy();
 allEnemies[1] = new Enemy();
 allEnemies[2] = new Enemy();
+allEnemies[3] = new Enemy();
 
 var player = new Player();
 // This listens for key presses and sends the keys to your
