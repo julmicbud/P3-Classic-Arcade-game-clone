@@ -38,11 +38,21 @@ var Player = function() {
     this.sprite = 'images/char-princess-girl.png';
     this.x = 202;
     this.y = 404;
+    this.runsCompleted = 0;
 };
 
 Player.prototype.update = function() {
 	if (this.y <= 0){
-		this.gameOver += 1;
+		this.runsCompleted += 1;
+		this.y = 404;
+	};
+	if (this.x <= 0) {
+		this.x = 0;
+	}
+	if(this.x >= 404) {
+		this.x = 404;
+	}
+	if (this.y >= 404) {
 		this.y = 404;
 	};
 };
