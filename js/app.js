@@ -2,11 +2,13 @@
 var Enemy = function() {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
+	this.sprite = 'images/enemy-bug.png';
 	this.x = -101;
-	this.y = 62;
+	this.y = 62 + (85.5 * (Math.floor(Math.random() * 3)));
+	this.speed = (Math.random() * 700) + 100;
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
-    this.sprite = 'images/enemy-bug.png';
+    
 };
 
 // Update the enemy's position, required method for game
