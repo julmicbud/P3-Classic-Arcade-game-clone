@@ -22,6 +22,7 @@ Enemy.prototype.update = function(dt) {
     // Reset the game if player hits a bug proximity by 30px
     if(player.x >= this.x - 30 && player.x <= this.x + 30){
         if(player.y >= this.y - 30 && player.y <= this.y + 30){
+            alert("Play again?");
             this.reset();
         }
     }
@@ -48,8 +49,9 @@ var Player = function() {
 Player.prototype.update = function() {
 	if (this.y <= 0){
 		this.runsCompleted += 1;
+		alert("You won!");
 		this.y = 400;
-	};
+	}
 //keeps the princess from running off the screen
 	if (this.x <= 0) {
 		this.x = 0;
@@ -59,7 +61,7 @@ Player.prototype.update = function() {
 	}
 	if (this.y >= 404) {
 		this.y = 404;
-	};
+	}
 };
 
 // draws the player on he canvas

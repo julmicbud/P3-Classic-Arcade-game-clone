@@ -4,8 +4,7 @@ var Enemy = function() {
     // defined the Enemy function and told them where to start and how fast to go 
 	this.sprite = 'images/enemy-bug.png';
 	this.x = -100;
-	//this.y = 62 + (85.5 * (Math.floor(Math.random() * 3)));
-	this.y = (y * 83) - (83 / 3);
+	this.y = 62 + (82.5 * (Math.floor(Math.random() * 3)));
 	this.speed = (Math.random() * 500) + 100;
 };
 
@@ -23,6 +22,7 @@ Enemy.prototype.update = function(dt) {
     // Reset the game if player hits a bug proximity by 30px
     if(player.x >= this.x - 30 && player.x <= this.x + 30){
         if(player.y >= this.y - 30 && player.y <= this.y + 30){
+            alert("Play again?");
             this.reset();
         }
     }
@@ -49,6 +49,7 @@ var Player = function() {
 Player.prototype.update = function() {
 	if (this.y <= 0){
 		this.runsCompleted += 1;
+		alert("You won!");
 		this.y = 400;
 	};
 //keeps the princess from running off the screen
