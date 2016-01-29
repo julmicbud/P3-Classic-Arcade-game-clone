@@ -1,12 +1,11 @@
 // Enemies our player must avoid
 var Enemy = function() {
     // Variables applied to each of our instances go here,
-    // defined the Enecy function and told them where to start and how fast to go 
+    // defined the Enemy function and told them where to start and how fast to go 
 	this.sprite = 'images/enemy-bug.png';
-	this.x = -101;
-	this.y = 62 + (85.5 * (Math.floor(Math.random() * 3)));
+	this.x = -100;
+	this.y = 62 + (82.5 * (Math.floor(Math.random() * 3)));
 	this.speed = (Math.random() * 500) + 100;
-
 };
 
 // Update the enemy's position, required method for game
