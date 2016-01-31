@@ -51,7 +51,7 @@ Player.prototype.update = function() {
 		this.runsCompleted += 1;
 		alert("You won!");
 		this.y = 400;
-	};
+	}
 //keeps the princess from running off the screen
 	if (this.x <= 0) {
 		this.x = 0;
@@ -61,7 +61,7 @@ Player.prototype.update = function() {
 	}
 	if (this.y >= 404) {
 		this.y = 404;
-	};
+	}
 };
 
 // draws the player on he canvas
