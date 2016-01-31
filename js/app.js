@@ -22,7 +22,6 @@ Enemy.prototype.update = function(dt) {
         this.x = -2;
     }
     // Reset the game if player hits a bug proximity by 30px
-<<<<<<< HEAD
     if (player.x >= this.x - 30 && player.x <= this.x + 30) {
         if (player.y >= this.y - 30 && player.y <= this.y + 30) {
             alert('Play again?');
@@ -31,12 +30,6 @@ Enemy.prototype.update = function(dt) {
             // I just thought this was easier.             
             player.x = 200;
             player.y = 400;
-=======
-    if(player.x >= this.x - 30 && player.x <= this.x + 30){
-        if(player.y >= this.y - 30 && player.y <= this.y + 30){
-            alert("Play again?");
-            this.reset();
->>>>>>> 1b52855f4852294385416844b806e65f37331f9d
         }
     }
 };
@@ -60,7 +53,6 @@ var Player = function() {
 
 //tells the player where the water is located
 Player.prototype.update = function() {
-<<<<<<< HEAD
     if (this.y <= 0) {
         this.runsCompleted += 1;
         alert('You won!');
@@ -76,23 +68,6 @@ Player.prototype.update = function() {
     if (this.y >= 404) {
         this.y = 404;
     };
-=======
-	if (this.y <= 0){
-		this.runsCompleted += 1;
-		alert("You won!");
-		this.y = 400;
-	}
-//keeps the princess from running off the screen
-	if (this.x <= 0) {
-		this.x = 0;
-	}
-	if(this.x >= 404) {
-		this.x = 404;
-	}
-	if (this.y >= 404) {
-		this.y = 404;
-	}
->>>>>>> 1b52855f4852294385416844b806e65f37331f9d
 };
 
 // draws the player on he canvas
@@ -117,10 +92,7 @@ Player.prototype.handleInput = function(key) {
 // Place the player object in a variable called player
 
 var allEnemies = [];
-//still couldn't get the for loop to work. 
-//for(var i = 0; i < 4; i++){
-	//allEnemies.push(new Enemy());
-//}
+
 allEnemies[0] = new Enemy();
 allEnemies[1] = new Enemy();
 allEnemies[2] = new Enemy();
