@@ -2,10 +2,10 @@
 var Enemy = function() {
     // Variables applied to each of our instances go here,
     // defined the Enemy function and told them where to start and how fast to go 
-	this.sprite = 'images/enemy-bug.png';
-	this.x = -100;
-	this.y = 62 + (82.5 * (Math.floor(Math.random() * 3)));
-	this.speed = (Math.random() * 500) + 100;
+    this.sprite = 'images/enemy-bug.png';
+    this.x = -100;
+    this.y = 62 + (82.5 * (Math.floor(Math.random() * 3)));
+    this.speed = (Math.random() * 500) + 100;
 };
 
 // Update the enemy's position, required method for game
@@ -14,22 +14,35 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    if(this.x <= 550){
+    var endOfStone = 550;
+
+    if (this.x <= endOfStone) {
         this.x += this.speed * dt;
-    }else{
+    } else {
         this.x = -2;
     }
     // Reset the game if player hits a bug proximity by 30px
+<<<<<<< HEAD
+    if (player.x >= this.x - 30 && player.x <= this.x + 30) {
+        if (player.y >= this.y - 30 && player.y <= this.y + 30) {
+            alert('Play again?');
+            // I tried to make the changes that were suggested by the reviewer. When I did my game broke.
+            // I decided to think again and this is the solution I came up with. It uses less code in the end.
+            // I just thought this was easier.             
+            player.x = 200;
+            player.y = 400;
+=======
     if(player.x >= this.x - 30 && player.x <= this.x + 30){
         if(player.y >= this.y - 30 && player.y <= this.y + 30){
             alert("Play again?");
             this.reset();
+>>>>>>> 1b52855f4852294385416844b806e65f37331f9d
         }
     }
 };
 
 // Draw the enemy on the screen, required method for game
-Enemy.prototype.render = function () {
+Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
@@ -47,6 +60,23 @@ var Player = function() {
 
 //tells the player where the water is located
 Player.prototype.update = function() {
+<<<<<<< HEAD
+    if (this.y <= 0) {
+        this.runsCompleted += 1;
+        alert('You won!');
+        this.y = 400;
+    };
+    //keeps the princess from running off the screen
+    if (this.x <= 0) {
+        this.x = 0;
+    }
+    if (this.x >= 404) {
+        this.x = 404;
+    }
+    if (this.y >= 404) {
+        this.y = 404;
+    };
+=======
 	if (this.y <= 0){
 		this.runsCompleted += 1;
 		alert("You won!");
@@ -62,35 +92,34 @@ Player.prototype.update = function() {
 	if (this.y >= 404) {
 		this.y = 404;
 	}
+>>>>>>> 1b52855f4852294385416844b806e65f37331f9d
 };
 
 // draws the player on he canvas
-Player.prototype.render = function () {
-   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+Player.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
 //this adds the movement in the keys so that the princess will actually move
 Player.prototype.handleInput = function(key) {
-	var direction = {
-		'left': [-101, 0],
-		'up': [0, -85.5],
-		'right': [101, 0],
-		'down': [0, 85.5]
-		};
-		this.x += direction[key][0];
-		this.y += direction[key][1];
-};
-
-//this is the function to get the princess to reset when she hits a bug
-Object.prototype.reset = function() {
-  player.x = 200;
-  player.y = 400;
+    var direction = {
+        'left': [-101, 0],
+        'up': [0, -85.5],
+        'right': [101, 0],
+        'down': [0, 85.5]
+    };
+    this.x += direction[key][0];
+    this.y += direction[key][1];
 };
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
+
 var allEnemies = [];
+for(var i = 0; i < 4; i++){
+	allEnemies.push(new Enemy());
+}
 allEnemies[0] = new Enemy();
 allEnemies[1] = new Enemy();
 allEnemies[2] = new Enemy();

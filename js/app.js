@@ -117,7 +117,10 @@ Player.prototype.handleInput = function(key) {
 // Place the player object in a variable called player
 
 var allEnemies = [];
-
+//still couldn't get the for loop to work. 
+//for(var i = 0; i < 4; i++){
+	//allEnemies.push(new Enemy());
+//}
 allEnemies[0] = new Enemy();
 allEnemies[1] = new Enemy();
 allEnemies[2] = new Enemy();
